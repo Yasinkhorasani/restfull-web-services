@@ -37,6 +37,11 @@ public class UserResource {
       return user;
     }
 
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id){
+       service.deleteById(id);
+
+    }
     //POST Method to return correct HTTP Status Code and Location
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
@@ -47,4 +52,6 @@ public class UserResource {
                 .toUri();
        return ResponseEntity.created(location).build();
     }
+
+
 }
