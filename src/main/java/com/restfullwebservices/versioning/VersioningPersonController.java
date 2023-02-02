@@ -20,6 +20,7 @@ public class VersioningPersonController {
         return new PersonV2(new Name("Yasin","Khorasani"));
     }
 ////////////////////////////versioning REST ARI; Request Param -Amazon
+
     @GetMapping(path="/person", params = "version=1")
     public PersonV1 getFirstVersionPersonRequestParameter(){
         return new PersonV1("Yasin Kh");
@@ -39,7 +40,8 @@ public class VersioningPersonController {
     public PersonV2 getSecondVersionPersonRequestHeader(){
         return new PersonV2(new Name("Sahar" , "morattab"));
     }
-    ///////////////////////// Accept Header -Github
+
+    ///////////////////////// Accept Header - GitHub
     @GetMapping(path = "/person/header",produces= "application/vnd.company.app-v1+json")
     public PersonV1 getSFirstVersionPersonAcceptHeader(){
         return new PersonV1("Mani Movassagh");
