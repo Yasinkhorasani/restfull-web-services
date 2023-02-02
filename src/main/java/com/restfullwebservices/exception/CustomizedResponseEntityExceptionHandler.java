@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 //Implementing generic exception handling for all resource
 @ControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
     //500
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorDetails> handelAllException(Exception ex, WebRequest request){
