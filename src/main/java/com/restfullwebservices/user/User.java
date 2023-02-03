@@ -1,10 +1,10 @@
 package com.restfullwebservices.user;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.restfullwebservices.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "user_details")
 public class User {
-
     @Id
     @GeneratedValue
     private Integer id;
@@ -29,4 +29,8 @@ public class User {
 
     @Past(message = "Birth Date should be in the past")
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post1> posts;
+
 }

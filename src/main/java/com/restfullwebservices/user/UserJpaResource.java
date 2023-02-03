@@ -23,6 +23,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 public class UserJpaResource {
 
+    private UserDaoService service;
+
     @Autowired
     private UserRepository repository;
 
@@ -54,6 +56,15 @@ public class UserJpaResource {
     @DeleteMapping("jpa/users/{id}")
     public void deleteUser(@PathVariable int id){
        repository.deleteById(id);
+    }
+
+    @GetMapping("jpa/users/{id}/posts")
+    public List<Post1> retrievePostsUser(@PathVariable int id){
+        Optional<User> user = repository.findById(id);
+
+        if(user.isEmpty())
+            throw new UserNotFoundException("id:"+ id);
+       return user.get().getPosts();
     }
 
     //POST Method to return correct HTTP Status Code and Location
