@@ -24,7 +24,7 @@ public class User {
     private Integer id;
 
     @Size(min = 2,message = "Name should have at least 2 characters")
-    @JsonProperty("user_name")//customize field names in Response
+   // @JsonProperty("user_name")//customize field names in Response
     private String name;
 
     @Past(message = "Birth Date should be in the past")
